@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useParams, useLocation } from 'react-router-dom';
-import { ChevronRight, CheckCircle2, Code, Cpu, Database, Award, BookOpen, Users, Play, Target, Monitor, Wifi, ShieldAlert, Film, TrendingUp, Info, ChevronDown } from 'lucide-react';
+import { ChevronRight, CheckCircle2, XCircle, Code, Cpu, Database, Award, BookOpen, Users, Play, Target, Monitor, Wifi, ShieldAlert, Film, TrendingUp, Info, ChevronDown, Calendar, Clock, ClipboardList, GraduationCap, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /* ────────────── Image paths ────────────── */
@@ -16,6 +16,10 @@ const IMAGES = {
     mktContent: '/images/pillar-mkt-content.png',
     mktStrategy: '/images/pillar-mkt-strategy.png',
     mktGrowth: '/images/pillar-mkt-growth.png',
+    becariosHero: '/images/becarios-hero.png',
+    becariosGap: '/images/becarios-gap.png',
+    becariosTraining: '/images/becarios-training.png',
+    becariosSuccess: '/images/becarios-success.png',
 };
 
 /* ────────────── Data ────────────── */
@@ -71,6 +75,24 @@ const PROGRAMS: Record<string, Program> = {
         ],
         curriculum: [
             {
+                sem: 'Tronco Común',
+                title: 'Fundamentos de IA',
+                desc: 'Introducción a redes neuronales, modelos de lenguaje (LLMs), visión artificial y ética en la inteligencia artificial.',
+                importance: 'La IA es el núcleo de la transformación digital actual. Entender sus principios permite no solo usarla, sino innovar con ella de forma consciente y ética.'
+            },
+            {
+                sem: 'Tronco Común',
+                title: 'Fundamentos de Computación',
+                desc: 'Arquitectura de computadoras, sistemas operativos, redes, lógica booleana y el funcionamiento interno de la nube.',
+                importance: 'No puedes dominar la IA sin entender la máquina que la ejecuta. Este conocimiento separa a los usuarios de herramientas de los verdaderos arquitectos tecnológicos.'
+            },
+            {
+                sem: 'Tronco Común',
+                title: 'Computación Productiva',
+                desc: 'Metodologías ágiles, herramientas de colaboración (Git, Slack, Notion), automatización de flujos de trabajo y ciberseguridad personal.',
+                importance: 'La velocidad es la ventaja competitiva hoy. Aprender a trabajar de forma eficiente y segura multiplica tu capacidad de entrega y calidad profesional.'
+            },
+            {
                 sem: 'Semestre 1',
                 title: 'Fundamentos de Programación',
                 desc: 'Dominio de Python desde cero, control de versiones con Git, estructuras de bases de datos SQL/NoSQL y automatización de tareas básicas.',
@@ -122,6 +144,24 @@ const PROGRAMS: Record<string, Program> = {
             { img: IMAGES.vfx, label: 'Efectos Visuales (VFX)' },
         ],
         curriculum: [
+            {
+                sem: 'Tronco Común',
+                title: 'Fundamentos de IA',
+                desc: 'Introducción a redes neuronales, modelos de lenguaje (LLMs), visión artificial y ética en la inteligencia artificial.',
+                importance: 'La IA es el núcleo de la transformación digital actual. Entender sus principios permite no solo usarla, sino innovar con ella de forma consciente y ética.'
+            },
+            {
+                sem: 'Tronco Común',
+                title: 'Fundamentos de Computación',
+                desc: 'Arquitectura de computadoras, sistemas operativos, redes, lógica booleana y el funcionamiento interno de la nube.',
+                importance: 'No puedes dominar la IA sin entender la máquina que la ejecuta. Este conocimiento separa a los usuarios de herramientas de los verdaderos arquitectos tecnológicos.'
+            },
+            {
+                sem: 'Tronco Común',
+                title: 'Computación Productiva',
+                desc: 'Metodologías ágiles, herramientas de colaboración (Git, Slack, Notion), automatización de flujos de trabajo y ciberseguridad personal.',
+                importance: 'La velocidad es la ventaja competitiva hoy. Aprender a trabajar de forma eficiente y segura multiplica tu capacidad de entrega y calidad profesional.'
+            },
             {
                 sem: 'Semestre 1',
                 title: 'Fundamentos Audiovisuales',
@@ -175,6 +215,24 @@ const PROGRAMS: Record<string, Program> = {
         ],
         curriculum: [
             {
+                sem: 'Tronco Común',
+                title: 'Fundamentos de IA',
+                desc: 'Introducción a redes neuronales, modelos de lenguaje (LLMs), visión artificial y ética en la inteligencia artificial.',
+                importance: 'La IA es el núcleo de la transformación digital actual. Entender sus principios permite no solo usarla, sino innovar con ella de forma consciente y ética.'
+            },
+            {
+                sem: 'Tronco Común',
+                title: 'Fundamentos de Computación',
+                desc: 'Arquitectura de computadoras, sistemas operativos, redes, lógica booleana y el funcionamiento interno de la nube.',
+                importance: 'No puedes dominar la IA sin entender la máquina que la ejecuta. Este conocimiento separa a los usuarios de herramientas de los verdaderos arquitectos tecnológicos.'
+            },
+            {
+                sem: 'Tronco Común',
+                title: 'Computación Productiva',
+                desc: 'Metodologías ágiles, herramientas de colaboración (Git, Slack, Notion), automatización de flujos de trabajo y ciberseguridad personal.',
+                importance: 'La velocidad es la ventaja competitiva hoy. Aprender a trabajar de forma eficiente y segura multiplica tu capacidad de entrega y calidad profesional.'
+            },
+            {
                 sem: 'Semestre 1',
                 title: 'Fundamentos y RRSS',
                 desc: 'Psicología del consumidor digital, storytelling para marcas, creación intensiva de video corto (Vertical Video) y gestión de algoritmos.',
@@ -226,6 +284,7 @@ const Navbar = () => (
                         ))}
                     </div>
                 </div>
+                <Link to="/becarios">Becarios</Link>
                 <a href="#contacto">Admisiones</a>
             </div>
 
@@ -266,6 +325,7 @@ const Footer = () => (
                         <h4>Universidad</h4>
                         <ul>
                             <li><Link to="/">Sobre Nosotros</Link></li>
+                            <li><Link to="/becarios">Programa de Becarios</Link></li>
                             <li><a href="#becas">Financiamiento</a></li>
                             <li><a href="#requisitos">Equipamiento</a></li>
                         </ul>
@@ -552,6 +612,213 @@ const ProgramPage = ({ programId }: { programId: string }) => {
     );
 };
 
+/* ────────────── Page: Becarios ────────────── */
+const BecariosPage = () => {
+    const fadeIn = {
+        initial: { opacity: 0, y: 30 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true },
+        transition: { duration: 0.7 },
+    };
+
+    return (
+        <div className="page">
+            {/* Slide 1 - Portada */}
+            <header className="hero">
+                <div className="hero__bg">
+                    <img src={IMAGES.heroBg} alt="" aria-hidden="true" />
+                    <div className="hero__overlay" />
+                </div>
+                <div className="hero__content container">
+                    <div className="hero__text">
+                        <motion.div {...fadeIn}>
+                            <h1 className="hero__title">
+                                <span className="hero__title-small">Programa de</span>
+                                <br />
+                                <span className="hero__highlight">Becarios 2026</span>
+                                <br />
+                                <span className="hero__title-small">Inteligencia Artificial</span>
+                            </h1>
+                            <p className="hero__tagline">
+                                <span className="text-electric">Futuro Digital con Propósito</span>
+                            </p>
+                            <p className="hero__sub">Capacitación en IA + Experiencia = Oportunidades Laborales</p>
+                            <div className="hero__actions">
+                                <button className="btn btn-primary btn--hero">Postularme</button>
+                                <a href="#contexto" className="btn btn-outline btn--hero">Saber más</a>
+                            </div>
+                        </motion.div>
+                    </div>
+                    <div className="hero__image">
+                        <motion.img
+                            src={IMAGES.becariosHero}
+                            alt="Programa de Becarios"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.6 }}
+                        />
+                    </div>
+                </div>
+            </header>
+
+            {/* Slide 2 - Contexto */}
+            <section id="contexto" className="becarios-section">
+                <div className="container">
+                    <div className="split-layout">
+                        <motion.div className="split-text" {...fadeIn}>
+                            <span className="badge-tech">Contexto</span>
+                            <h2>¿Por qué existe este programa?</h2>
+                            <p>La Inteligencia Artificial está transformando todas las industrias. Las empresas hoy enfrentan un problema claro:</p>
+                            <ul className="bullet-list">
+                                <li><ChevronRight size={18} className="text-electric" /> <span>Falta de talento capacitado en tecnología e IA</span></li>
+                                <li><ChevronRight size={18} className="text-electric" /> <span>Escasez de personas con experiencia en proyectos reales</span></li>
+                                <li><ChevronRight size={18} className="text-electric" /> <span>Brecha entre la formación académica tradicional y las habilidades del mercado</span></li>
+                            </ul>
+                            <p>Por esta razón creamos el Programa de Becarios, un modelo que combina formación, práctica y desarrollo profesional.</p>
+                        </motion.div>
+                        <motion.div className="split-image" {...fadeIn}>
+                            <img src={IMAGES.becariosGap} alt="The Gap" className="rounded-img" />
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Slide 3 & 4 - Qué es / Qué No es */}
+            <section className="becarios-info">
+                <div className="container">
+                    <div className="info-grid">
+                        <motion.div className="info-card glass-panel" {...fadeIn}>
+                            <h3>¿Qué es el Programa?</h3>
+                            <p>Un proceso estructurado de formación y desarrollo profesional de <strong>2 años</strong> que combina:</p>
+                            <div className="icon-features">
+                                <div className="icon-feature">
+                                    <Code size={20} className="text-electric" />
+                                    <span>Entrenamiento técnico</span>
+                                </div>
+                                <div className="icon-feature">
+                                    <ClipboardList size={20} className="text-electric" />
+                                    <span>Desarrollo de proyectos</span>
+                                </div>
+                                <div className="icon-feature">
+                                    <Briefcase size={20} className="text-electric" />
+                                    <span>Experiencia profesional aplicada</span>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div className="info-card glass-panel warning-border" {...fadeIn}>
+                            <h3>¿Qué <span className="text-orange">NO</span> es el programa?</h3>
+                            <p>Para evitar confusiones, es importante ser claros. Este programa:</p>
+                            <ul className="negative-list">
+                                <li><XCircle size={18} className="text-orange" /> <span>No es marketing multinivel</span></li>
+                                <li><XCircle size={18} className="text-orange" /> <span>No requiere vender productos</span></li>
+                                <li><XCircle size={18} className="text-orange" /> <span>No exige comprar membresías</span></li>
+                                <li><XCircle size={18} className="text-orange" /> <span>No es un curso tradicional pasivo</span></li>
+                            </ul>
+                            <p className="small-text">Requiere compromiso, disciplina y participación activa.</p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Slide 5 - Cómo funciona */}
+            <section className="how-it-works">
+                <div className="container">
+                    <motion.div className="section-header" {...fadeIn}>
+                        <h2>Cómo funciona el programa</h2>
+                        <p>Componentes principales de tu desarrollo</p>
+                    </motion.div>
+                    <div className="steps-grid">
+                        <motion.div className="step-card glass-panel" {...fadeIn}>
+                            <div className="step-number text-electric">01</div>
+                            <h4>Entrenamiento</h4>
+                            <p>Clases y contenidos especializados en IA, uso de herramientas actuales y desarrollo de habilidades digitales.</p>
+                        </motion.div>
+                        <motion.div className="step-card glass-panel" {...fadeIn}>
+                            <div className="step-number text-electric">02</div>
+                            <h4>Proyectos</h4>
+                            <p>Participación en proyectos reales, desarrollo de experiencia profesional y trabajo colaborativo.</p>
+                        </motion.div>
+                        <motion.div className="step-card glass-panel" {...fadeIn}>
+                            <div className="step-number text-electric">03</div>
+                            <h4>Plataforma</h4>
+                            <p>Acceso a clases grabadas y materiales para revisar en cualquier momento.</p>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Slide 6 - Inicio */}
+            <section className="launch-banner grad-electric">
+                <div className="container">
+                    <motion.div className="launch-content" {...fadeIn}>
+                        <div className="launch-text">
+                            <h3>El programa comienza mañana</h3>
+                            <div className="launch-details">
+                                <div className="l-item"><Calendar size={20} color="var(--primary-deep)" /> <span>Sábado</span></div>
+                                <div className="l-item"><Clock size={20} color="var(--primary-deep)" /> <span>10:00 AM – 12:00 PM</span></div>
+                            </div>
+                        </div>
+                        <div className="launch-action">
+                            <p>Primer sesión: entrega de cuentas, estructura y herramientas.</p>
+                            <button className="btn btn-primary btn--white">Asegurar mi lugar</button>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Slide 7 & 8 - Estructura y Experiencia */}
+            <section className="academic-experience">
+                <div className="container">
+                    <div className="split-layout reverse">
+                        <motion.div className="split-text" {...fadeIn}>
+                            <h2>Estructura Académica</h2>
+                            <p>Iniciamos con un <strong>Tronco Común</strong> para desarrollar fundamentos sólidos en IA aplicada, automatización y herramientas digitales.</p>
+                            <div className="specializations">
+                                <span>Software y Datos</span>
+                                <span>Creación Audiovisual</span>
+                                <span>Marketing Digital</span>
+                            </div>
+                            <div className="experience-box glass-panel">
+                                <h4>Experiencia Profesional</h4>
+                                <p>A partir del 2do semestre, involúcrate en proyectos reales con potencial de ingresos superiores a <strong>$1,000 USD</strong>.</p>
+                            </div>
+                        </motion.div>
+                        <motion.div className="split-image" {...fadeIn}>
+                            <img src={IMAGES.becariosTraining} alt="Training" className="rounded-img" />
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Slide 9 & 10 - Reconocimiento y Proyección */}
+            <section className="final-vision">
+                <div className="container">
+                    <div className="vision-card glass-panel">
+                        <motion.div className="vision-content" {...fadeIn}>
+                            <GraduationCap size={48} className="text-electric icon-top" />
+                            <h2>Reconocimiento Académico</h2>
+                            <p>Al completar los 2 años, recibes un <strong>Grado Académico Internacional por Competencias</strong> firmado por Competex International.</p>
+                            <ul className="check-list">
+                                <li><CheckCircle2 size={18} className="text-electric" /> <span>Experiencia profesional desarrollada</span></li>
+                                <li><CheckCircle2 size={18} className="text-electric" /> <span>Competencias demostradas</span></li>
+                                <li><CheckCircle2 size={18} className="text-electric" /> <span>Proyectos realizados</span></li>
+                            </ul>
+                        </motion.div>
+                        <motion.div className="vision-image" {...fadeIn}>
+                            <img src={IMAGES.becariosSuccess} alt="Success" />
+                            <div className="projection-overlay glass-panel">
+                                <h4>Proyección Profesional</h4>
+                                <p>Te integramos en proyectos tecnológicos y convenios con empresas del sector digital.</p>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
 /* ────────────── Main App Router ────────────── */
 const App = () => {
     return (
@@ -563,6 +830,7 @@ const App = () => {
                 <Route path="/software-datos" element={<ProgramPage programId="software" />} />
                 <Route path="/creacion-audiovisual" element={<ProgramPage programId="audiovisual" />} />
                 <Route path="/marketing-digital" element={<ProgramPage programId="marketing" />} />
+                <Route path="/becarios" element={<BecariosPage />} />
             </Routes>
             <Footer />
         </Router>
